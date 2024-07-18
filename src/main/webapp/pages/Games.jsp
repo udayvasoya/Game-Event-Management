@@ -165,7 +165,7 @@
                 <div class="col-12 col-md-6 single-blog-content">
                     <div class="blog-content">
                         <figure class="featured-image">
-                            <a href="#">
+                            <a href="details.jsp">
                                 <img
                                         src="../images/blog-image-1.jpg"
                                         alt="fesival+celebration"
@@ -175,7 +175,7 @@
                         <!-- featured-image -->
 
                         <div class="box-link-date">
-                            <a href="">03.12.18</a>
+                            <a href="details.jsp">03.12.18</a>
                         </div>
                         <!-- box-link-date -->
 
@@ -186,12 +186,8 @@
                             <!-- entry-header -->
 
                             <div class="entry-meta">
-                    <span class="author-name"
-                    ><a href="#">By James Williams</a></span
-                    >
-                                <span class="space">|</span>
-                                <span class="comments-count"
-                                ><a href="#">3 comments</a></span
+                                <span class="author-name"
+                                ><a href="details.jsp">By James Williams</a></span
                                 >
                             </div>
                             <!-- entry-meta -->
