@@ -92,7 +92,7 @@
 
                         <ul>
                             <li><a href="../index.html">HOME</a></li>
-                            <li><a href="./about-us.html">About</a></li>
+                            <li><a href="./about-us.jsp">About</a></li>
                             <li><a href="./elements.html">Element</a></li>
                             <li><a href="./Games.html">BLOG</a></li>
                             <li><a href="./contact.html">CONTACT</a></li>
