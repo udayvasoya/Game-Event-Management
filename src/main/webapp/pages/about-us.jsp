@@ -106,7 +106,7 @@
                             <li>
                                 <div class="header-right">
                                     <div class="user-info">
-                                        <a class="toggle" href="./pages/p.html" role="button">
+                                        <a class="toggle" href="profile.jsp" role="button">
                           <span class="user-icon">
                             <img src="../images/uday.jpg" alt="" />
                           </span>
