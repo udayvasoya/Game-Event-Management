@@ -79,58 +79,7 @@
 
 <body>
 <header class="site-header">
-    <div class="header-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-10 col-lg-4">
-                    <h1 class="site-branding flex">
-                        <a href="./index.html"
-                        ><img src="images/logo_white.png" alt="" style="height: 60px"
-                        /></a>
-                    </h1>
-                </div>
-
-                <div class="col-2 col-lg-8">
-                    <nav class="site-navigation">
-                        <div class="hamburger-menu d-lg-none">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <!-- .hamburger-menu -->
-
-                        <ul>
-                            <li><a href="./index.jsp">HOME</a></li>
-                            <li><a href="./pages/about-us.jsp">ABOUT</a></li>
-                            <li><a href="./pages/Games.jsp">GAMES</a></li>
-                            <li><a href="./pages/contact.jsp">CONTACT</a></li>
-                            <li>
-                                <a href="#"><i class="fas fa-search"></i></a>
-                            </li>
-
-                            <li>
-                                <div class="header-right">
-                                    <div class="user-info">
-                                        <a class="toggle" href="./pages/profile.jsp" role="button">
-                                          <span class="user-icon">
-                                            <img src="images/uday.jpg" alt="" />
-                                          </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- flex -->
-                    </nav>
-                    <!-- .site-navigation -->
-                </div>
-                <!-- .col-12 -->
-            </div>
-            <!-- .row -->
-        </div>
-        <!-- container-fluid -->
-    </div>
+    <jsp:include page="pages/header.jsp"/>
     <!-- header-bar -->
 </header>
 <!-- .site-header -->
@@ -147,110 +96,14 @@
                 </div>
                 <!-- .entry-header -->
 
-                <div class="milestones">
-                    <div class="row flex flex-wrap justify-content-between">
-                        <div class="d-col-n mt-5 mt-lg-0">
-                            <div class="counter-box">
-                                <div class="flex justify-content-center">
-                                    <div
-                                            class="start-counter text-white"
-                                            data-to="390"
-                                            data-speed="2000"
-                                    ></div>
-                                </div>
 
-                                <h3 class="entry-title">Hours of Music</h3>
-                                <!-- entry-title -->
-                            </div>
-                            <!-- counter-box -->
-                        </div>
-                        <!-- d-col-n -->
-
-                        <div class="d-col-n mt-5 mt-lg-0">
-                            <div class="counter-box">
-                                <div class="flex justify-content-center">
-                                    <div
-                                            class="start-counter text-white"
-                                            data-to="68"
-                                            data-speed="2000"
-                                    ></div>
-                                </div>
-
-                                <h3 class="entry-title">DJ's Playing</h3>
-                                <!-- entry-title -->
-                            </div>
-                            <!-- counter-box -->
-                        </div>
-                        <!-- d-col-n -->
-
-                        <div class="d-col-n mt-5 mt-lg-0">
-                            <div class="counter-box">
-                                <div class="flex justify-content-center">
-                                    <div
-                                            class="start-counter text-white"
-                                            data-to="120"
-                                            data-speed="2000"
-                                    ></div>
-                                    <div class="counter-k">K</div>
-                                </div>
-
-                                <h3 class="entry-title">Visitors</h3>
-                                <!-- entry-title -->
-                            </div>
-                            <!-- counter-box -->
-                        </div>
-                        <!-- d-col-n -->
-
-                        <div class="d-col-n mt-5 mt-lg-0">
-                            <div class="counter-box">
-                                <div class="flex justify-content-center">
-                                    <div
-                                            class="start-counter text-white"
-                                            data-to="8"
-                                            data-speed="2000"
-                                    ></div>
-                                </div>
-
-                                <h3 class="entry-title">Stages</h3>
-                                <!-- entry-title -->
-                            </div>
-                            <!-- counter-box -->
-                        </div>
-                        <!-- d-col-n -->
-
-                        <div class="d-col-n mt-5 mt-lg-0">
-                            <div class="counter-box">
-                                <div class="flex justify-content-center">
-                                    <div
-                                            class="start-counter text-white"
-                                            data-to="325"
-                                            data-speed="2000"
-                                    ></div>
-                                    <div class="counter-k">K</div>
-                                </div>
-
-                                <h3 class="entry-title">Followers</h3>
-                                <!-- entry-title -->
-                            </div>
-                            <!-- counter-box -->
-                        </div>
-                        <!-- d-col-n -->
-                    </div>
-                </div>
                 <!-- .countdown -->
             </div>
             <!-- .col-12 -->
         </div>
         <!-- row -->
 
-        <div class="row">
-            <div class="col-12">
-                <div class="entry-footer">
-                    <a href="#" class="btn">Buy Tickets</a>
-                    <a href="#" class="btn current">See Lineup</a>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- .container -->
 </div>

@@ -71,55 +71,7 @@
 
 <body class="contact-page">
 <header class="site-header">
-    <div class="header-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-10 col-lg-4">
-                    <h1 class="site-branding flex">
-                        <a href="../index.html">SUNFEST</a>
-                    </h1>
-                </div>
-
-                <div class="col-2 col-lg-8">
-                    <nav class="site-navigation">
-                        <div class="hamburger-menu d-lg-none">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <!-- .hamburger-menu -->
-
-                        <ul>
-                            <li><a href="../index.jsp">HOME</a></li>
-                            <li><a href="about-us.jsp">ABOUT</a></li>
-                            <li><a href="Games.jsp">GAMES</a></li>
-                            <li><a href="contact.jsp">CONTACT</a></li>
-                            <li>
-                                <a href="#"><i class="fas fa-search"></i></a>
-                            </li>
-                            <li>
-                                <div class="header-right">
-                                    <div class="user-info">
-                                        <a class="toggle" href="profile.jsp" role="button">
-                          <span class="user-icon">
-                            <img src="../images/uday.jpg" alt="" />
-                          </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- flex -->
-                    </nav>
-                    <!-- .site-navigation -->
-                </div>
-                <!-- .col-12 -->
-            </div>
-            <!-- .row -->
-        </div>
-        <!-- container-fluid -->
-    </div>
+    <jsp:include page="header.jsp" />
     <!-- header-bar -->
 </header>
 
