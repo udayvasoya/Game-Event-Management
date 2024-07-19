@@ -83,7 +83,7 @@
                     <h2 class="entry-title">About us</h2>
 
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="../index.jsp">Home</a></li>
                         <li>About us</li>
                     </ul>
                     <!-- .breadcrumbs -->

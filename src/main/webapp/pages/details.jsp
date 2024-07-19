@@ -93,7 +93,7 @@
                 <div class="entry-header">
                     <h2 class="entry-title">Game Details</h2>
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="../index.jsp">Home</a></li>
                         <li>Game Details</li>
                     </ul>
                     <!-- .breadcrumbs -->

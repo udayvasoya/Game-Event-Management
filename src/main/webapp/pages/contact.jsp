@@ -80,10 +80,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="entry-header">
-                    <h2 class="entry-title">Contect</h2>
+                    <h2 class="entry-title">Contact</h2>
 
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="../index.jsp">Home</a></li>
                         <li>Contact</li>
                     </ul>
                     <!-- .breadcrumbs -->

@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -84,7 +88,7 @@
             <div class="row align-items-center">
                 <div class="col-10 col-lg-4">
                     <h1 class="site-branding flex">
-                        <a href="./index.html"
+                        <a href="index.jsp"
                         ><img src="images/logo_white.png" alt="" style="height: 60px"
                         /></a>
                     </h1>
@@ -153,8 +157,6 @@
             <!-- .col-12 -->
         </div>
         <!-- row -->
-
-
     </div>
     <!-- .container -->
 </div>
@@ -172,17 +174,31 @@
                     <!-- entry-title -->
 
                     <div class="lineup-artists">
+                        <%
+                            try
+                            {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                                Statement st =connection.createStatement();
+                                ResultSet rs = st.executeQuery("select image,fullname from coordinate");
+                                if(rs.next())
+                                {
+                                    String img = rs.getString("image");
+                                    String cImage = "F:/JSP_PRO/Admin_game/src/main/webapp/Upload/" + img;
+                                    String name = rs.getString("fullname");
+
+                        %>
                         <div class="lineup-artists-wrap flex flex-wrap">
                             <figure class="featured-image">
                                 <a href="#">
-                                    <img src="images/black-chick.jpg" alt="" />
+                                    <img src="<%= cImage %>" alt="" />
                                 </a>
                             </figure>
                             <!-- featured-image -->
 
                             <div class="lineup-artists-description">
                                 <div class="lineup-artists-description-container">
-                                    <div class="entry-title">Jamila Williams</div>
+                                    <div class="entry-title"><%= name %></div>
                                     <!-- entry-title -->
 
                                     <div class="entry-content">
@@ -204,81 +220,91 @@
                             </div>
                             <!-- lineup-artists-description -->
                         </div>
+                        <%
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.printStackTrace();
+                            }
+                        %>
+
                         <!-- lineup-artists-wrap -->
 
-                        <div class="lineup-artists-wrap flex flex-wrap">
-                            <div class="lineup-artists-description">
-                                <figure class="featured-image d-md-none">
-                                    <a href="#">
-                                        <img src="images/mathew-kane.jpg" alt="" />
-                                    </a>
-                                </figure>
-                                <!-- featured-image -->
+<%--                        <div class="lineup-artists-wrap flex flex-wrap">--%>
+<%--                            <div class="lineup-artists-description">--%>
+<%--                                <figure class="featured-image d-md-none">--%>
+<%--                                    <a href="#">--%>
+<%--                                        <img src="images/mathew-kane.jpg" alt="" />--%>
+<%--                                    </a>--%>
+<%--                                </figure>--%>
+<%--                                <!-- featured-image -->--%>
 
-                                <div class="lineup-artists-description-container">
-                                    <div class="entry-title">Sandra Superstar</div>
-                                    <!-- entry-title -->
+<%--                                <div class="lineup-artists-description-container">--%>
+<%--                                    <div class="entry-title">Sandra Superstar</div>--%>
+<%--                                    <!-- entry-title -->--%>
 
-                                    <div class="entry-content">
-                                        <p>
-                                            Quisque at erat eu libero consequat tempus. Quisque
-                                            mole stie convallis tempus. Ut semper purus metus, a
-                                            euismod sapien sodales ac. Duis viverra eleifend
-                                            fermentum.
-                                        </p>
-                                    </div>
-                                    <!-- entry-content -->
+<%--                                    <div class="entry-content">--%>
+<%--                                        <p>--%>
+<%--                                            Quisque at erat eu libero consequat tempus. Quisque--%>
+<%--                                            mole stie convallis tempus. Ut semper purus metus, a--%>
+<%--                                            euismod sapien sodales ac. Duis viverra eleifend--%>
+<%--                                            fermentum.--%>
+<%--                                        </p>--%>
+<%--                                    </div>--%>
+<%--                                    <!-- entry-content -->--%>
 
-                                    <div class="box-link">
-                                        <a href="#"><img src="images/box.jpg" alt="" /></a>
-                                    </div>
-                                    <!-- box-link -->
-                                </div>
-                                <!-- lineup-artists-description-container -->
-                            </div>
-                            <!-- lineup-artists-description -->
+<%--                                    <div class="box-link">--%>
+<%--                                        <a href="#"><img src="images/box.jpg" alt="" /></a>--%>
+<%--                                    </div>--%>
+<%--                                    <!-- box-link -->--%>
+<%--                                </div>--%>
+<%--                                <!-- lineup-artists-description-container -->--%>
+<%--                            </div>--%>
+<%--                            <!-- lineup-artists-description -->--%>
 
-                            <figure class="featured-image d-none d-md-block">
-                                <a href="#">
-                                    <img src="images/mathew-kane.jpg" alt="" />
-                                </a>
-                            </figure>
-                            <!-- featured-image -->
-                        </div>
-                        <!-- lineup-artists-wrap -->
+<%--                            <figure class="featured-image d-none d-md-block">--%>
+<%--                                <a href="#">--%>
+<%--                                    <img src="images/mathew-kane.jpg" alt="" />--%>
+<%--                                </a>--%>
+<%--                            </figure>--%>
+<%--                            <!-- featured-image -->--%>
+<%--                        </div>--%>
+<%--                        <!-- lineup-artists-wrap -->--%>
 
-                        <div class="lineup-artists-wrap flex flex-wrap">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="images/eric-ward.jpg" alt="" /> </a>
-                            </figure>
-                            <!-- featured-image -->
+<%--                        <div class="lineup-artists-wrap flex flex-wrap">--%>
+<%--                            <figure class="featured-image">--%>
+<%--                                <a href="#"> <img src="images/eric-ward.jpg" alt="" /> </a>--%>
+<%--                            </figure>--%>
+<%--                            <!-- featured-image -->--%>
 
-                            <div class="lineup-artists-description">
-                                <div class="lineup-artists-description-container">
-                                    <div class="entry-title">DJ Crazyhead</div>
-                                    <!-- entry-title -->
+<%--                            <div class="lineup-artists-description">--%>
+<%--                                <div class="lineup-artists-description-container">--%>
+<%--                                    <div class="entry-title">DJ Crazyhead</div>--%>
+<%--                                    <!-- entry-title -->--%>
 
-                                    <div class="entry-content">
-                                        <p>
-                                            Quisque at erat eu libero consequat tempus. Quisque
-                                            mole stie convallis tempus. Ut semper purus metus, a
-                                            euismod sapien sodales ac. Duis viverra eleifend
-                                            fermentum.
-                                        </p>
-                                    </div>
-                                    <!-- entry-content -->
+<%--                                    <div class="entry-content">--%>
+<%--                                        <p>--%>
+<%--                                            Quisque at erat eu libero consequat tempus. Quisque--%>
+<%--                                            mole stie convallis tempus. Ut semper purus metus, a--%>
+<%--                                            euismod sapien sodales ac. Duis viverra eleifend--%>
+<%--                                            fermentum.--%>
+<%--                                        </p>--%>
+<%--                                    </div>--%>
+<%--                                    <!-- entry-content -->--%>
 
-                                    <div class="box-link">
-                                        <a href="#"> <img src="images/box.jpg" alt="" /></a>
-                                    </div>
-                                    <!-- box-link -->
-                                </div>
-                                <!-- lineup-artists-description-container -->
-                            </div>
-                            <!-- lineup-artists-description -->
-                        </div>
+<%--                                    <div class="box-link">--%>
+<%--                                        <a href="#"> <img src="images/box.jpg" alt="" /></a>--%>
+<%--                                    </div>--%>
+<%--                                    <!-- box-link -->--%>
+<%--                                </div>--%>
+<%--                                <!-- lineup-artists-description-container -->--%>
+<%--                            </div>--%>
+<%--                            <!-- lineup-artists-description -->--%>
+<%--                        </div>--%>
                         <!-- lineup-artists-wrap -->
                     </div>
+
                     <!-- lineup-artists -->
                 </div>
                 <!-- lineup-artists-headline -->
@@ -347,58 +373,7 @@
 
                             <h2>Pink Machine</h2>
                         </div>
-                        <!-- artist-single -->
 
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-5.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
-
-                            <h2>Brasil Band</h2>
-                        </div>
-                        <!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-6.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
-
-                            <h2>Mickey</h2>
-                        </div>
-                        <!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-7.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
-
-                            <h2>DJ Girl</h2>
-                        </div>
-                        <!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-8.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
-
-                            <h2>Stan Smith</h2>
-                        </div>
                         <!-- artist-single -->
                     </div>
                     <!-- the-complete-lineup-artists -->

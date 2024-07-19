@@ -128,7 +128,7 @@
                     <h2 class="entry-title">Profile</h2>
 
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="../index.jsp">Home</a></li>
                         <li>Profile</li>
                     </ul>
                     <!-- .breadcrumbs -->
