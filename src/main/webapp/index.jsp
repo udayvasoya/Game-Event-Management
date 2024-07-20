@@ -1,7 +1,5 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.*" %>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -180,11 +178,12 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                                 Statement st =connection.createStatement();
-                                ResultSet rs = st.executeQuery("select image,fullname from coordinate");
+                                ResultSet rs = st.executeQuery("select * from coordinate");
                                 if(rs.next())
                                 {
-                                    String img = rs.getString("image");
-                                    String cImage = "F:/JSP_PRO/Admin_game/src/main/webapp/Upload/" + img;
+                                    byte[] img = rs.getBytes("image");
+                                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
                                     String name = rs.getString("fullname");
 
                         %>
