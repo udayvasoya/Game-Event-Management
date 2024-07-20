@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %>
 
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -178,19 +179,23 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                                 Statement st =connection.createStatement();
-                                ResultSet rs = st.executeQuery("select * from coordinate");
-                                if(rs.next())
+                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
+
+                                while(rs.next())
                                 {
                                     byte[] img = rs.getBytes("image");
                                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
                                     String cImage = "data:image/jpeg;base64," + base64Imagee;
                                     String name = rs.getString("fullname");
 
+
+
+
                         %>
                         <div class="lineup-artists-wrap flex flex-wrap">
-                            <figure class="featured-image">
+                            <figure class="featured-image ">
                                 <a href="#">
-                                    <img src="<%= cImage %>" alt="" />
+                                    <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
                                 </a>
                             </figure>
                             <!-- featured-image -->
@@ -219,6 +224,69 @@
                             </div>
                             <!-- lineup-artists-description -->
                         </div>
+
+                        <%
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.printStackTrace();
+                            }
+                        %>
+                        <!-- lineup-artists-wrap -->
+                        <%
+                            try
+                            {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                                Statement st =connection.createStatement();
+                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
+                                if(rs.next())
+                                {
+                                    byte[] img = rs.getBytes("image");
+                                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String name = rs.getString("fullname");
+
+                        %>
+                        <div class="lineup-artists-wrap flex flex-wrap">
+
+                            <div class="lineup-artists-description">
+
+                                <!-- featured-image -->
+
+                                <div class="lineup-artists-description-container">
+                                    <div class="entry-title"><%= name %></div>
+                                    <!-- entry-title -->
+
+                                    <div class="entry-content">
+                                        <p>
+                                            Quisque at erat eu libero consequat tempus. Quisque
+                                            mole stie convallis tempus. Ut semper purus metus, a
+                                            euismod sapien sodales ac. Duis viverra eleifend
+                                            fermentum.
+                                        </p>
+                                    </div>
+                                    <!-- entry-content -->
+
+                                    <div class="box-link">
+                                        <a href="#"><img src="images/box.jpg" alt="" /></a>
+                                    </div>
+                                    <!-- box-link -->
+                                </div>
+                                <!-- lineup-artists-description-container -->
+                            </div>
+
+                            <!-- lineup-artists-description -->
+
+                            <figure class="featured-image d-none d-md-block h-50 w-50">
+                                <a href="#">
+                                    <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
+                                </a>
+                            </figure>
+
+                            <!-- featured-image -->
+                        </div>
                         <%
                                 }
                             }
@@ -229,78 +297,60 @@
                         %>
 
                         <!-- lineup-artists-wrap -->
+                        <%
+                            try
+                            {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                                Statement st =connection.createStatement();
+                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
 
-<%--                        <div class="lineup-artists-wrap flex flex-wrap">--%>
-<%--                            <div class="lineup-artists-description">--%>
-<%--                                <figure class="featured-image d-md-none">--%>
-<%--                                    <a href="#">--%>
-<%--                                        <img src="images/mathew-kane.jpg" alt="" />--%>
-<%--                                    </a>--%>
-<%--                                </figure>--%>
-<%--                                <!-- featured-image -->--%>
+                                while(rs.next())
+                                {
+                                    byte[] img = rs.getBytes("image");
+                                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String name = rs.getString("fullname");
 
-<%--                                <div class="lineup-artists-description-container">--%>
-<%--                                    <div class="entry-title">Sandra Superstar</div>--%>
-<%--                                    <!-- entry-title -->--%>
+                        %>
+                        <div class="lineup-artists-wrap flex flex-wrap">
+                            <figure class="featured-image h-50 w-50">
+                                <a href="#"> <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/> </a>
+                            </figure>
+                            <!-- featured-image -->
 
-<%--                                    <div class="entry-content">--%>
-<%--                                        <p>--%>
-<%--                                            Quisque at erat eu libero consequat tempus. Quisque--%>
-<%--                                            mole stie convallis tempus. Ut semper purus metus, a--%>
-<%--                                            euismod sapien sodales ac. Duis viverra eleifend--%>
-<%--                                            fermentum.--%>
-<%--                                        </p>--%>
-<%--                                    </div>--%>
-<%--                                    <!-- entry-content -->--%>
+                            <div class="lineup-artists-description">
+                                <div class="lineup-artists-description-container">
+                                    <div class="entry-title"><%= name %></div>
+                                    <!-- entry-title -->
 
-<%--                                    <div class="box-link">--%>
-<%--                                        <a href="#"><img src="images/box.jpg" alt="" /></a>--%>
-<%--                                    </div>--%>
-<%--                                    <!-- box-link -->--%>
-<%--                                </div>--%>
-<%--                                <!-- lineup-artists-description-container -->--%>
-<%--                            </div>--%>
-<%--                            <!-- lineup-artists-description -->--%>
+                                    <div class="entry-content">
+                                        <p>
+                                            Quisque at erat eu libero consequat tempus. Quisque
+                                            mole stie convallis tempus. Ut semper purus metus, a
+                                            euismod sapien sodales ac. Duis viverra eleifend
+                                            fermentum.
+                                        </p>
+                                    </div>
+                                    <!-- entry-content -->
 
-<%--                            <figure class="featured-image d-none d-md-block">--%>
-<%--                                <a href="#">--%>
-<%--                                    <img src="images/mathew-kane.jpg" alt="" />--%>
-<%--                                </a>--%>
-<%--                            </figure>--%>
-<%--                            <!-- featured-image -->--%>
-<%--                        </div>--%>
-<%--                        <!-- lineup-artists-wrap -->--%>
-
-<%--                        <div class="lineup-artists-wrap flex flex-wrap">--%>
-<%--                            <figure class="featured-image">--%>
-<%--                                <a href="#"> <img src="images/eric-ward.jpg" alt="" /> </a>--%>
-<%--                            </figure>--%>
-<%--                            <!-- featured-image -->--%>
-
-<%--                            <div class="lineup-artists-description">--%>
-<%--                                <div class="lineup-artists-description-container">--%>
-<%--                                    <div class="entry-title">DJ Crazyhead</div>--%>
-<%--                                    <!-- entry-title -->--%>
-
-<%--                                    <div class="entry-content">--%>
-<%--                                        <p>--%>
-<%--                                            Quisque at erat eu libero consequat tempus. Quisque--%>
-<%--                                            mole stie convallis tempus. Ut semper purus metus, a--%>
-<%--                                            euismod sapien sodales ac. Duis viverra eleifend--%>
-<%--                                            fermentum.--%>
-<%--                                        </p>--%>
-<%--                                    </div>--%>
-<%--                                    <!-- entry-content -->--%>
-
-<%--                                    <div class="box-link">--%>
-<%--                                        <a href="#"> <img src="images/box.jpg" alt="" /></a>--%>
-<%--                                    </div>--%>
-<%--                                    <!-- box-link -->--%>
-<%--                                </div>--%>
-<%--                                <!-- lineup-artists-description-container -->--%>
-<%--                            </div>--%>
-<%--                            <!-- lineup-artists-description -->--%>
-<%--                        </div>--%>
+                                    <div class="box-link">
+                                        <a href="#"> <img src="images/box.jpg" alt="" /></a>
+                                    </div>
+                                    <!-- box-link -->
+                                </div>
+                                <!-- lineup-artists-description-container -->
+                            </div>
+                            <!-- lineup-artists-description -->
+                        </div>
+                        <%
+                                    }
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.printStackTrace();
+                            }
+                        %>
                         <!-- lineup-artists-wrap -->
                     </div>
 
