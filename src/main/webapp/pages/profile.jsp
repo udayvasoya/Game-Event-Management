@@ -47,6 +47,38 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css" />
     <style>
+        .header-right {
+            display: flex;
+            justify-content: flex-end;
+            height: 70px;
+            width: 50%;
+        }
+
+        .user-info {
+            padding: 5px 10px 5px 0;
+        }
+
+        .user-info .toggle .user-icon {
+            width: 52px;
+            height: 52px;
+            font-size: 24px;
+            color: #1b00ff;
+            line-height: 52px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+            -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+        }
+        .user-info .toggle .user-icon img {
+            border-radius: 100%;
+            width: 100% !important;
+            height: 100% !important;
+        }
         body {
             margin-top: 20px;
             color: #1a202c;

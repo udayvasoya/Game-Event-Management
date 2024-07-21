@@ -179,14 +179,14 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                                 Statement st =connection.createStatement();
-                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
+                                ResultSet rs = st.executeQuery("select * from games order by RAND() limit 1");
 
                                 while(rs.next())
                                 {
                                     byte[] img = rs.getBytes("image");
                                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
-                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
-                                    String name = rs.getString("fullname");
+                                    String gImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String gname = rs.getString("game_name");
 
 
 
@@ -195,14 +195,14 @@
                         <div class="lineup-artists-wrap flex flex-wrap">
                             <figure class="featured-image ">
                                 <a href="#">
-                                    <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
+                                    <img src="<%= gImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
                                 </a>
                             </figure>
                             <!-- featured-image -->
 
                             <div class="lineup-artists-description">
                                 <div class="lineup-artists-description-container">
-                                    <div class="entry-title"><%= name %></div>
+                                    <div class="entry-title"><%= gname %></div>
                                     <!-- entry-title -->
 
                                     <div class="entry-content">
@@ -240,13 +240,13 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                                 Statement st =connection.createStatement();
-                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
+                                ResultSet rs = st.executeQuery("select * from games order by RAND() limit 1");
                                 if(rs.next())
                                 {
                                     byte[] img = rs.getBytes("image");
                                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
-                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
-                                    String name = rs.getString("fullname");
+                                    String gImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String gname = rs.getString("game_name");
 
                         %>
                         <div class="lineup-artists-wrap flex flex-wrap">
@@ -256,7 +256,7 @@
                                 <!-- featured-image -->
 
                                 <div class="lineup-artists-description-container">
-                                    <div class="entry-title"><%= name %></div>
+                                    <div class="entry-title"><%= gname %></div>
                                     <!-- entry-title -->
 
                                     <div class="entry-content">
@@ -281,7 +281,7 @@
 
                             <figure class="featured-image d-none d-md-block h-50 w-50">
                                 <a href="#">
-                                    <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
+                                    <img src="<%= gImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/>
                                 </a>
                             </figure>
 
@@ -303,25 +303,25 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                                 Statement st =connection.createStatement();
-                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 1");
+                                ResultSet rs = st.executeQuery("select * from games order by RAND() limit 1");
 
                                 while(rs.next())
                                 {
                                     byte[] img = rs.getBytes("image");
                                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
-                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
-                                    String name = rs.getString("fullname");
+                                    String gImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String gname = rs.getString("game_name");
 
                         %>
                         <div class="lineup-artists-wrap flex flex-wrap">
                             <figure class="featured-image h-50 w-50">
-                                <a href="#"> <img src="<%= cImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/> </a>
+                                <a href="#"> <img src="<%= gImage %>" alt="" style="height: 75vh !important; object-fit: cover;"/> </a>
                             </figure>
                             <!-- featured-image -->
 
                             <div class="lineup-artists-description">
                                 <div class="lineup-artists-description-container">
-                                    <div class="entry-title"><%= name %></div>
+                                    <div class="entry-title"><%= gname %></div>
                                     <!-- entry-title -->
 
                                     <div class="entry-content">
@@ -367,62 +367,84 @@
                 <div class="the-complete-lineup">
                     <div class="entry-title">
                         <p>JUST THE BEST</p>
-                        <h2>The Complete Lineup</h2>
+                        <h2>Co-ordinaters</h2>
                     </div>
                     <!-- entry-title -->
 
                     <div class="row the-complete-lineup-artists">
+                        <%
+                            try
+                            {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                                Statement st =connection.createStatement();
+                                ResultSet rs = st.executeQuery("select * from coordinate order by RAND() limit 4");
+                                while(rs.next())
+                                {
+                                    byte[] img = rs.getBytes("image");
+                                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                                    String cImage = "data:image/jpeg;base64," + base64Imagee;
+                                    String cname = rs.getString("fullname");
+
+                        %>
                         <div class="col-6 col-md-4 col-lg-3 artist-single">
                             <figure class="featured-image">
-                                <img src="images/image-1.jpg" alt="" />
+                                <img src="<%= cImage %>" alt="" style="height: 55vh !important; object-fit: cover;"/>
                                 <div class="box-link">
                                     <img src="images/box.jpg" alt="" />
                                 </div>
                             </figure>
                             <!-- featured-image -->
 
-                            <h2>Miska Smith</h2>
+                            <h2><%= cname %></h2>
                         </div>
                         <!-- artist-single -->
 
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-2.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
+<%--                        <div class="col-6 col-md-4 col-lg-3 artist-single">--%>
+<%--                            <figure class="featured-image">--%>
+<%--                                <img src="<%= cImage %>" alt="" style="height: 55vh !important; object-fit: cover;"/>--%>
+<%--                                <div class="box-link">--%>
+<%--                                    <img src="images/box.jpg" alt="" />--%>
+<%--                                </div>--%>
+<%--                            </figure>--%>
+<%--                            <!-- featured-image -->--%>
 
-                            <h2>Hayley Down</h2>
-                        </div>
-                        <!-- artist-single -->
+<%--                            <h2><%= cname %></h2>--%>
+<%--                        </div>--%>
+<%--                        <!-- artist-single -->--%>
 
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-3.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
+<%--                        <div class="col-6 col-md-4 col-lg-3 artist-single">--%>
+<%--                            <figure class="featured-image">--%>
+<%--                                <img src="<%= cImage %>" alt="" style="height: 55vh !important; object-fit: cover;"/>--%>
+<%--                                <div class="box-link">--%>
+<%--                                    <img src="images/box.jpg" alt="" />--%>
+<%--                                </div>--%>
+<%--                            </figure>--%>
+<%--                            <!-- featured-image -->--%>
 
-                            <h2>The Band Song</h2>
-                        </div>
-                        <!-- artist-single -->
+<%--                            <h2><%= cname %></h2>--%>
+<%--                        </div>--%>
+<%--                        <!-- artist-single -->--%>
 
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <img src="images/image-4.jpg" alt="" />
-                                <div class="box-link">
-                                    <img src="images/box.jpg" alt="" />
-                                </div>
-                            </figure>
-                            <!-- featured-image -->
+<%--                        <div class="col-6 col-md-4 col-lg-3 artist-single">--%>
+<%--                            <figure class="featured-image">--%>
+<%--                                <img src="<%= cImage %>" alt="" style="height: 55vh !important; object-fit: cover;"/>--%>
+<%--                                <div class="box-link">--%>
+<%--                                    <img src="images/box.jpg" alt="" />--%>
+<%--                                </div>--%>
+<%--                            </figure>--%>
+<%--                            <!-- featured-image -->--%>
 
-                            <h2>Pink Machine</h2>
-                        </div>
-
+<%--                            <h2><%= cname %></h2>--%>
+<%--                        </div>--%>
+                        <%
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.printStackTrace();
+                            }
+                        %>
                         <!-- artist-single -->
                     </div>
                     <!-- the-complete-lineup-artists -->
@@ -463,7 +485,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming Party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -484,7 +506,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming Party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -505,7 +527,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming Party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -526,7 +548,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -547,7 +569,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming Party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -568,7 +590,7 @@
                                         href="#"
                                         class="entry-content flex flex-column justify-content-center align-items-center"
                                 >
-                                    <h3>Welcoming Party 2018</h3>
+                                    <h3>Welcoming Party 2024</h3>
                                     <p>
                                         Green Palace, 22 Street, 23-28, Los Angeles California
                                     </p>
@@ -591,19 +613,7 @@
         </div>
         <!-- .next-event-slider-wrap -->
     </div>
-    <div class="col-12 flex justify-content-center" style="margin-top: 90px">
-        <input
-                type="submit"
-                name=""
-                value="Load More"
-                class="btn btn-info"
-                style="
-            background: -webkit-linear-gradient(#00d0ff, #25ffbf);
-            background: -webkit-linear-gradient(#00d0ff, #25ffbf);
-            border: none;
-          "
-        />
-    </div>
+
 </div>
 
 <footer class="site-footer">
