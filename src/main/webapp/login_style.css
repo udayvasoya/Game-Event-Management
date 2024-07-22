@@ -70,7 +70,7 @@ button.ghost {
 }
 
 form {
-    background-image: url(./lb.jpg);
+    background-image: url(./images/middle-cover.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,7 +168,7 @@ select{
 }
 
 .overlay {
-    background-image: url(./cover.jpg);
+    background-image: url(./images/cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
