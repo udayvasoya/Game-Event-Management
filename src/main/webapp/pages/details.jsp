@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 19-07-2024
@@ -118,8 +121,32 @@
             <!-- -->
         </div>
         <!-- -->
+        <%
+            try {
+
+            String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+            if (id == null || id.isEmpty()) {
+                id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+            }
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management", "root", "");
+                String query = "SELECT c.fullname, c.email, g.game_discribtion, g.game_rules, g.price, g.image,g.date FROM coordinate AS c JOIN games AS g ON c.game = g.game_name WHERE g.id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1, Integer.parseInt(id)); // Set the 'id' parameter dynamically
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) { // Fetch only one record
+                    byte[] img = rs.getBytes("image");
+                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                    String gImage = "data:image/jpeg;base64," + base64Imagee;
+                    String gDis = rs.getString("game_description");
+                    String grul = rs.getString("game_rules");
+                    int gprice = rs.getInt("price");
+                    String cname = rs.getString("fullname");
+                    String gdate = rs.getString("date");
+        %>
         <figure class="featured-image">
-            <img src="../images/about-us-content-image.jpg" alt="party people" />
+            <img src="<%= gImage %>" alt="party people" />
         </figure>
         <div
                 style="
@@ -140,7 +167,7 @@
           "
         >
             Details
-            <p>This is popular game</p>
+            <p><%= gDis %></p>
         </div>
         <div
                 style="
@@ -161,7 +188,7 @@
           "
         >
             Rules
-            <p>Many people are compulsory available</p>
+            <p><%= grul %></p>
         </div>
         <div
                 class="d-flex justify-content-around"
@@ -175,23 +202,31 @@
         >
             <div>
                 <h4>Price</h4>
-                <h5>100</h5>
+                <h5><%= gprice %></h5>
             </div>
             <div>
                 <h4>Coordinate Name</h4>
-                <h5 class="text-center">abc</h5>
+                <h5 class="text-center"><%= cname %></h5>
             </div>
             <div>
                 <h4>Date</h4>
-                <h5>20-04-2024</h5>
+                <h5><%= gdate %></h5>
             </div>
         </div>
-
+        <%
+                }
+                rs.close();
+                ps.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
         <div class="flex justify-content-center">
             <form
                     id="gameForm"
                     class="needs-validation"
-                    action="../index.html"
+                    action="../index.jsp"
                     method="post"
                     enctype="multipart/form-data"
                     novalidate

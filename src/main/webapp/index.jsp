@@ -187,10 +187,6 @@
                                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
                                     String gImage = "data:image/jpeg;base64," + base64Imagee;
                                     String gname = rs.getString("game_name");
-
-
-
-
                         %>
                         <div class="lineup-artists-wrap flex flex-wrap">
                             <figure class="featured-image ">
