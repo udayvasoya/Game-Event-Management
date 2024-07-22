@@ -133,7 +133,7 @@
                 <div class="col-12 col-md-6 single-blog-content">
                     <div class="blog-content">
                         <figure class="featured-image">
-                            <a href="details.jsp&id=<%= id %>">
+                            <a href="details.jsp?id=<%= id %>">
                                 <img
                                         src="<%= gImage %>"
                                         alt="fesival+celebration"

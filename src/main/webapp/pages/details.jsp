@@ -112,6 +112,7 @@
 <!-- .page-header -->
 
 <div class="main-content">
+
     <div class="container">
         <div class="entry-header">
             <div class="entry-title">
@@ -124,29 +125,29 @@
         <%
             try {
 
-            String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
-            if (id == null || id.isEmpty()) {
-                id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
-            }
+                String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+                if (id == null || id.isEmpty()) {
+                    id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+                }
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management", "root", "");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
                 String query = "SELECT c.fullname, c.email, g.game_discribtion, g.game_rules, g.price, g.image,g.date FROM coordinate AS c JOIN games AS g ON c.game = g.game_name WHERE g.id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1, Integer.parseInt(id)); // Set the 'id' parameter dynamically
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setString(1, id); // Set the 'id' parameter dynamically
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) { // Fetch only one record
                     byte[] img = rs.getBytes("image");
                     String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
                     String gImage = "data:image/jpeg;base64," + base64Imagee;
-                    String gDis = rs.getString("game_description");
+                    String gDis = rs.getString("game_discribtion");
                     String grul = rs.getString("game_rules");
                     int gprice = rs.getInt("price");
                     String cname = rs.getString("fullname");
                     String gdate = rs.getString("date");
         %>
         <figure class="featured-image">
-            <img src="<%= gImage %>" alt="party people" />
+            <img src="<%= gImage %>" alt="party people" style="width: 100% !important; object-fit: cover;" />
         </figure>
         <div
                 style="
@@ -217,11 +218,12 @@
                 }
                 rs.close();
                 ps.close();
-                conn.close();
+                connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         %>
+
         <div class="flex justify-content-center">
             <form
                     id="gameForm"
@@ -285,13 +287,12 @@
                         data-bs-target="#exampleModal">
                     Apply
                 </button>
-
-
             </form>
         </div>
     </div>
 
-</div>
+
+    </div>
 <!-- container -->
 </div>
 
@@ -382,18 +383,43 @@
 <!-- coordinate details -->
 <div class="container">
     <div class="row gutters-sm">
+        <%
+            try {
+
+                String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+                if (id == null || id.isEmpty()) {
+                    id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+                }
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                String query = "SELECT c.fullname,c.game, c.email, c.phone, c.image FROM coordinate AS c JOIN games AS g ON c.game = g.game_name WHERE g.id = ?";
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setString(1, id); // Set the 'id' parameter dynamically
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) { // Fetch only one record
+                    byte[] img = rs.getBytes("image");
+                    String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                    String cImage = "data:image/jpeg;base64," + base64Imagee;
+                    String cname = rs.getString("fullname");
+                    String cemail = rs.getString("email");
+                    String cphone = rs.getString("phone");
+                    String cgame = rs.getString("game");
+        %>
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
+
                     <div class="d-flex flex-column align-items-center text-center">
                         <img
-                                src="../images/uday.jpg"
+                                src="<%= cImage %>"
                                 alt="Admin"
                                 class="rounded-circle"
                                 width="150"
+                                style="height: 25vh !important;  object-fit: cover"
                         />
                         <div class="mt-3 text-dark fw-bold">
-                            <h4>Uday</h4>
+                            <h4><%= cname %></h4>
                         </div>
                     </div>
                 </div>
@@ -406,33 +432,41 @@
                         <div class="col-sm-3">
                             <h6 class="mb-0 text-dark">Full Name</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary">uday</div>
+                        <div class="col-sm-9 text-secondary"><%= cname %></div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-sm-3">
                             <h6 class="mb-0 text-dark">Email</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary">uday123@gmail.com</div>
+                        <div class="col-sm-9 text-secondary"><%= cemail %></div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-sm-3">
                             <h6 class="mb-0 text-dark">Phone</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary">9988776655</div>
+                        <div class="col-sm-9 text-secondary"><%= cphone %></div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-sm-3">
                             <h6 class="mb-0 text-dark">Game Coordinate</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary">khokho</div>
+                        <div class="col-sm-9 text-secondary"><%= cgame %></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <%
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    %>
 </div>
 <!-- main-content -->
 <footer class="site-footer mt-5">
