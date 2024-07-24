@@ -31,6 +31,11 @@ public class User_login {
         this.password = password;
     }
 
+    public User_login(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User_login(int id) {
         this.id = id;
     }

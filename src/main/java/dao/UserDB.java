@@ -4,6 +4,7 @@ import model.User_login;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class UserDB {
     public boolean insertuser (User_login user_login)
@@ -23,6 +24,25 @@ public class UserDB {
             int inserted =pst.executeUpdate();
 
             return inserted > 0 ;
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean validUser(User_login user_login)
+    {
+        try
+        {
+            Connection connection = myDataBase.getConnection();
+            PreparedStatement pst = connection.prepareStatement("select * from users where email=? and password=?");
+            pst.setString(1, user_login.getEmail());
+            pst.setString(2, user_login.getPassword());
+
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
         }
         catch (Exception ex)
         {

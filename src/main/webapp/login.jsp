@@ -32,11 +32,11 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="usersLoginServlet" enctype="multipart/form-data">
             <h1>Sign in</h1>
             <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="email" name="email" placeholder="Email" required/>
+            <input type="password" name="password" placeholder="Password" required/>
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
         </form>
