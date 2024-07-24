@@ -14,20 +14,20 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="addUserServlet" method="post">
             <h1>Create Account</h1>
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="number" placeholder="Mobile Number" />
-            <select required>
+            <input type="text" name="uusername" placeholder="Username" />
+            <input type="email" name="uemail" placeholder="Email" />
+            <input type="number" name="umobile" placeholder="Mobile Number" />
+            <select required name="ugender">
                 <option value="" disabled selected>Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <input type="date" placeholder="DOB" />
-            <input type="file" placeholder="Image" />
-            <input type="password" placeholder="Password" />
+            <input type="date" name="udob" placeholder="DOB" />
+            <input type="file" name="uimage" placeholder="Image" />
+            <input type="password" name="upassword" placeholder="Password" />
             <button>Sign Up</button>
         </form>
     </div>
