@@ -14,27 +14,26 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="addUserServlet" method="post">
+        <form action="addUserServlet" method="post" enctype="multipart/form-data">
             <h1>Create Account</h1>
-            <input type="text" name="uusername" placeholder="Username" />
-            <input type="email" name="uemail" placeholder="Email" />
-            <input type="number" name="umobile" placeholder="Mobile Number" />
+            <input type="text" name="uusername" placeholder="Username" required/>
+            <input type="email" name="uemail" placeholder="Email" required/>
+            <input type="number" name="umobile" placeholder="Mobile Number" required/>
             <select required name="ugender">
                 <option value="" disabled selected>Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <input type="date" name="udob" placeholder="DOB" />
-            <input type="file" name="uimage" placeholder="Image" />
-            <input type="password" name="upassword" placeholder="Password" />
+            <input type="date" name="udob" placeholder="DOB" required/>
+            <input type="file" name="uimage" placeholder="Image" required/>
+            <input type="password" name="upassword" placeholder="Password" required/>
             <button>Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form action="#">
             <h1>Sign in</h1>
-
             <span>or use your account</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />

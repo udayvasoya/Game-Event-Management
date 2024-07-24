@@ -4,13 +4,13 @@ public class User_login {
     private int id;
     private String username;
     private String email;
-    private int mobile;
+    private String mobile;
     private String gender;
     private String dob;
     private byte[]image;
     private String password;
 
-    public User_login(int id, String username, String email, int mobile, String gender, String dob, byte[] image, String password) {
+    public User_login(int id, String username, String email, String mobile, String gender, String dob, byte[] image, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -21,7 +21,7 @@ public class User_login {
         this.password = password;
     }
 
-    public User_login(String username, String email, int mobile, String gender, String dob, byte[] image, String password) {
+    public User_login(String username, String email, String mobile, String gender, String dob, byte[] image, String password) {
         this.username = username;
         this.email = email;
         this.mobile = mobile;
@@ -59,11 +59,11 @@ public class User_login {
         this.email = email;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 

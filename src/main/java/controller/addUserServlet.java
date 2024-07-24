@@ -23,14 +23,15 @@ public class addUserServlet extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("uusername");
         String email = req.getParameter("uemail");
-        int mobile = Integer.parseInt(req.getParameter("umobile"));
+        String mobile = req.getParameter("umobile");
         String gender = req.getParameter("ugender");
         String dob = req.getParameter("udob");
-        String password = req.getParameter("upassword");
-
         Part image = req.getPart("uimage");
         InputStream inputStream = image.getInputStream();
         byte[] udp = readBytesFromInputStream(inputStream);
+        String password = req.getParameter("upassword");
+
+
 
         User_login user_login = new User_login(username,email,mobile,gender,dob,udp,password);
         UserDB userDB = new UserDB();
@@ -39,6 +40,10 @@ public class addUserServlet extends HttpServlet
         if(insert)
         {
             resp.sendRedirect(req.getContextPath()+"/index.jsp");
+        }
+        else {
+
+            resp.sendRedirect(req.getContextPath()+"/login.jsp");
         }
     }
 

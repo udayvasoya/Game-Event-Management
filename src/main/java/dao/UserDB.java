@@ -11,10 +11,10 @@ public class UserDB {
         try
         {
             Connection connection = myDataBase.getConnection();
-            PreparedStatement pst =connection.prepareStatement("insert into user (username,email,mobile,gender,dob,image,password) values (?,?,?,?,?,?,?)");
+            PreparedStatement pst =connection.prepareStatement("insert into users (username,email,mobile,gender,dob,image,password) values (?,?,?,?,?,?,?)");
             pst.setString(1, user_login.getUsername());
             pst.setString(2, user_login.getEmail());
-            pst.setInt(3,user_login.getMobile());
+            pst.setString(3,user_login.getMobile());
             pst.setString(4, user_login.getGender());
             pst.setString(5, user_login.getDob());
             pst.setBytes(6, user_login.getImage());
