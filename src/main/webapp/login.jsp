@@ -32,7 +32,7 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="usersLoginServlet" enctype="multipart/form-data">
+        <form action="usersLoginServlet" method="post" enctype="multipart/form-data" >
             <h1>Sign in</h1>
             <span>or use your account</span>
             <input type="email" name="email" placeholder="Email" required/>

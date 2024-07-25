@@ -3,6 +3,9 @@ package controller;
 import dao.UserDB;
 import model.User_login;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.util.Properties;
 
 @WebServlet(name = "addUserServlet",value = "/addUserServlet")
 @MultipartConfig
@@ -39,6 +43,10 @@ public class addUserServlet extends HttpServlet
 
         if(insert)
         {
+            String subject = "Welcome to Our Service";
+            String messageBody = "<h1>Welcome, " + username + "!</h1>" +
+                    "<p>Thank you for registering with us.</p>";
+            sendEmail(email, subject, messageBody);
             resp.sendRedirect(req.getContextPath()+"/index.jsp");
         }
         else {
@@ -55,5 +63,54 @@ public class addUserServlet extends HttpServlet
             buffer.write(data, 0, bytesRead);
         }
         return buffer.toByteArray();
+    }
+
+    public void sendEmail(String recipientEmail, String subject, String messageBody) {
+        // Sender's email ID and password need to be mentioned
+        final String username = "vasoyauday808@gmail.com"; // <-- Replace with your Gmail username
+        final String password = "riam tqkd bnms qjtm";
+
+        // Setting up mail server properties
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        // Creating a new session with an authenticator
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            // Creating a default MimeMessage object
+            Message message = new MimeMessage(session);
+
+            // Setting From: header field of the header
+            message.setFrom(new InternetAddress(username));
+
+            // Setting To: header field of the header
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail)); // Specified recipient email address
+
+            // Setting Subject: header field
+            message.setSubject(subject);
+
+            // Now set the actual message
+            message.setContent(messageBody, "text/html"); // Set content as HTML
+
+            // Sending the message
+            Transport.send(message);
+
+            // Writing response
+            System.out.println("Sent message successfully to " + recipientEmail);
+        } catch (MessagingException e) {
+            // Print the stack trace to the console
+            e.printStackTrace();
+
+            // Write the error message to the response
+            System.out.println("Failed to send the email. Error: " + e.getMessage());
+        }
     }
 }
