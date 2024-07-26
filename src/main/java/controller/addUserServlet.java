@@ -16,7 +16,17 @@ import javax.servlet.http.Part;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import java.util.Properties;
 
 @WebServlet(name = "addUserServlet",value = "/addUserServlet")
@@ -47,7 +57,7 @@ public class addUserServlet extends HttpServlet
             String messageBody = "<h1>Welcome, " + username + "!</h1>" +
                     "<p>Thank you for registering with us.</p>";
             sendEmail(email, subject, messageBody);
-            resp.sendRedirect(req.getContextPath()+"/index.jsp");
+            resp.sendRedirect(req.getContextPath()+"/login.jsp");
         }
         else {
 
