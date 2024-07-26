@@ -202,7 +202,7 @@
             <!-- entry-content -->
 
             <div class="contact-form">
-                <form action="addContactServlet" method="post" enctype="multipart/form-data">
+                <form action="<%= request.getContextPath()%>/addContactServlet" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <input type="text" placeholder="Your name" name="name" required/>
@@ -220,7 +220,6 @@
 
                         <div class="col-12">
                     <textarea
-                            name="name"
                             rows="8"
                             cols="80"
                             placeholder="message"

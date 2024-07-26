@@ -29,12 +29,10 @@ public class addContactServlet extends HttpServlet
 
         if(success)
         {
-            RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
-            rd.include(req,resp);
+            resp.sendRedirect(req.getContextPath() + "/index.jsp");
         }
         else {
-            RequestDispatcher rd = req.getRequestDispatcher("/contact.jsp");
-            rd.include(req,resp);
+            resp.sendRedirect(req.getContextPath() + "/contact.jsp");
         }
 
 
