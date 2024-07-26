@@ -203,36 +203,36 @@
 
             <div class="contact-form">
                 <form action="addContactServlet" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <input type="text" placeholder="Your name" name="name" required/>
-                    </div>
-                    <!-- col-4 -->
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input type="text" placeholder="Your name" name="name" required/>
+                        </div>
+                        <!-- col-4 -->
 
-                    <div class="col-12 col-md-6">
-                        <input type="email" placeholder="Your email" name="email" required/>
-                    </div>
-                    <!-- col-6 -->
+                        <div class="col-12 col-md-6">
+                            <input type="email" placeholder="Your email" name="email" required/>
+                        </div>
+                        <!-- col-6 -->
 
-                    <div class="col-12">
-                        <input type="text" placeholder="Subject" name="subject" required/>
-                    </div>
+                        <div class="col-12">
+                            <input type="text" placeholder="Subject" name="subject" required/>
+                        </div>
 
-                    <div class="col-12">
-                <textarea
-                        name="name"
-                        rows="8"
-                        cols="80"
-                        placeholder="message"
-                        name="message"
-                        required
-                ></textarea>
-                    </div>
+                        <div class="col-12">
+                    <textarea
+                            name="name"
+                            rows="8"
+                            cols="80"
+                            placeholder="message"
+                            name="message"
+                            required
+                    ></textarea>
+                        </div>
 
-                    <div class="col-12 submit flex justify-content-center">
-                        <input type="submit" name="submit" value="send message" class="btn" />
+                        <div class="col-12 submit flex justify-content-center">
+                            <input type="submit" name="submit" value="send message" class="btn" />
+                        </div>
                     </div>
-                </div>
                 </form>
                 <!-- row -->
             </div>
