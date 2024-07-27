@@ -111,18 +111,40 @@
                             <li>
                                 <a href="#"><i class="fas fa-search"></i></a>
                             </li>
+                            <%
+                                String name = request.getParameter("uusername");
+                                if(name == null)
+                                {
+                            %>
 
                             <li>
                                 <div class="header-right">
                                     <div class="user-info">
-                                        <a class="toggle" href="./pages/profile.jsp" role="button">
+                                        <a class="toggle" href="login.jsp" role="button">
+                                            Login/Registration
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <%
+                            }
+                            else
+                            {
+                            %>
+                            <li>
+                                <div class="header-right">
+                                    <div class="user-info">
+                                        <a class="toggle" href="profile.jsp" role="button">
                                           <span class="user-icon">
-                                            <img src="images/uday.jpg" alt="" />
+                                            <img src="./images/uday.jpg" alt="" />
                                           </span>
                                         </a>
                                     </div>
                                 </div>
                             </li>
+                            <%
+                                }
+                            %>
                         </ul>
                         <!-- flex -->
                     </nav>
