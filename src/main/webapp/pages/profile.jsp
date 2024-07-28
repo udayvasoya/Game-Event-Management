@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 19-07-2024
@@ -148,7 +151,7 @@
 </head>
 <body class="about-us m-0">
 <header class="site-header">
-    <jsp:include page="header.jsp" />
+    <jsp:include page="../header.jsp" />
     <!-- header-bar -->
 </header>
 
@@ -174,11 +177,37 @@
     <!-- .container -->
 </div>
 <!-- .page-header -->
+<%
+    String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+    if (id == null || id.isEmpty()) {
+        id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+    }
+%>
 <div class="P-back-img">
     <div class="header-bar">
         <div class="main-body">
             <!-- Breadcrumb -->
             <div class="container">
+
+                <%
+
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management", "root", "");
+                        String query = "SELECT * FROM users WHERE id = ?";
+                        PreparedStatement ps = conn.prepareStatement(query);
+                        ps.setInt(1, Integer.parseInt(id)); // Set the 'id' parameter dynamically
+                        ResultSet rs = ps.executeQuery();
+
+                        if (rs.next()) { // Fetch only one record
+                            byte[] img = rs.getBytes("image");
+                            String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
+                            String uImage = "data:image/jpeg;base64," + base64Imagee;
+                            String uname = rs.getString("username");
+                            String uemail = rs.getString("email");
+                            int umobile = rs.getInt("mobile");
+                %>
+
                 <div class="row gutters-sm">
                     <div class="col-md-4 mb-3">
                         <div class="card">
@@ -187,13 +216,13 @@
                                         class="d-flex flex-column align-items-center text-center"
                                 >
                                     <img
-                                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                            src="<%= uImage %>"
                                             alt="Admin"
                                             class="rounded-circle"
                                             width="150"
                                     />
                                     <div class="mt-3">
-                                        <h4>John Doe</h4>
+                                        <h4><%= uname %></h4>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +236,7 @@
                                         <h6 class="mb-0">Name</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary text-light">
-                                        Kenneth Valdez
+                                        <%= uname %>
                                     </div>
                                 </div>
                                 <hr />
@@ -216,7 +245,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary text-light">
-                                        fip@jukmuh.al
+                                        <%= uemail %>
                                     </div>
                                 </div>
                                 <hr />
@@ -225,7 +254,7 @@
                                         <h6 class="mb-0">Phone</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary text-light">
-                                        (239) 816-9029
+                                        <%= umobile %>
                                     </div>
                                 </div>
                                 <hr />
@@ -247,6 +276,14 @@
                         </div>
                     </div>
                 </div>
+                <%
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
+                %>
             </div>
         </div>
     </div>

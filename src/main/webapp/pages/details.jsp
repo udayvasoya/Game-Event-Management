@@ -85,7 +85,7 @@
 </head>
 <body class="about-us">
 <header class="site-header">
-    <jsp:include page="header.jsp" />
+    <jsp:include page="../header.jsp" />
     <!-- header-bar -->
 </header>
 

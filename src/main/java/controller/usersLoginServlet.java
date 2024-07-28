@@ -31,13 +31,11 @@ public class usersLoginServlet extends HttpServlet
             HttpSession hs = req.getSession();
             hs.setAttribute("useremail",uemail);
 
-            RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
-            rd.include(req,resp);
+            resp.sendRedirect(req.getContextPath()+"/index.jsp?e="+ uemail);
         }
         else {
 
-            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-            rd.include(req,resp);
+            resp.sendRedirect(req.getContextPath()+"/login.jsp");
         }
     }
 }
