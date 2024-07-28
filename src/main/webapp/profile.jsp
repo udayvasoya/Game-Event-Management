@@ -400,7 +400,7 @@
                     </div>
                     <label> Gender: </label>
                     <div class="mb-3">
-                        <select required name="ugender">
+                        <select required class="form-control" name="ugender">
                             <option value="" disabled selected>Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>

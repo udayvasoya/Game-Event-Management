@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@WebServlet(name = "updateUserServlet",value = "updateUserServlet")
+@WebServlet(name = "updateUserServlet",value = "/updateUserServlet")
 @MultipartConfig
 public class updateUserServlet extends HttpServlet
 {
