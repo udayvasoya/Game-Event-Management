@@ -26,16 +26,16 @@
             rel="stylesheet"
     />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="../css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="../css/swiper.min.css" />
+    <link rel="stylesheet" href="css/swiper.min.css" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <style>
         .header-right {
             display: flex;
@@ -73,7 +73,7 @@
 </head>
 <body class="blog-page">
 <header class="site-header">
-    <jsp:include page="../header.jsp" />
+    <jsp:include page="header.jsp" />
     <!-- header-bar -->
 </header>
 
@@ -85,7 +85,7 @@
                     <h2 class="entry-title">Games</h2>
 
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="../index.jsp">Home</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li>Games</li>
                     </ul>
                     <!-- .breadcrumbs -->
@@ -195,17 +195,17 @@
 </footer>
 <!-- site-footer -->
 
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
 <script
         type="text/javascript"
-        src="../js/jquery.collapsible.min.js"
+        src="js/jquery.collapsible.min.js"
 ></script>
-<script type="text/javascript" src="../js/swiper.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="../js/circle-progress.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countTo.min.js"></script>
-<script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="js/circle-progress.min.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 </body>
 </html>
 

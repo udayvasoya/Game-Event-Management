@@ -35,13 +35,13 @@
     />
 
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="../css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="../css/swiper.min.css" />
+    <link rel="stylesheet" href="css/swiper.min.css" />
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <style>
         #btnApply:hover {
             background: -webkit-linear-gradient(#00d0ff, #25ffbf);
@@ -85,7 +85,7 @@
 </head>
 <body class="about-us">
 <header class="site-header">
-    <jsp:include page="../header.jsp" />
+    <jsp:include page="header.jsp" />
     <!-- header-bar -->
 </header>
 
@@ -96,7 +96,7 @@
                 <div class="entry-header">
                     <h2 class="entry-title">Game Details</h2>
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="../index.jsp">Home</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li>Game Details</li>
                     </ul>
                     <!-- .breadcrumbs -->
@@ -228,7 +228,7 @@
             <form
                     id="gameForm"
                     class="needs-validation"
-                    action="../index.jsp"
+                    action="index.jsp"
                     method="post"
                     enctype="multipart/form-data"
                     novalidate
@@ -476,14 +476,14 @@
 <!-- site-footer -->
 
 <!-- Scripts -->
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="../js/jquery.collapsible.min.js"></script>
-<script type="text/javascript" src="../js/swiper.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="../js/circle-progress.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countTo.min.js"></script>
-<script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/jquery.collapsible.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="js/circle-progress.min.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

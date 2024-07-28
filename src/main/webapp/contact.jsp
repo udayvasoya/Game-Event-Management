@@ -23,16 +23,16 @@
             rel="stylesheet"
     />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="../css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="../css/swiper.min.css" />
+    <link rel="stylesheet" href="css/swiper.min.css" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <style>
         .header-right {
             display: flex;
@@ -71,7 +71,7 @@
 
 <body class="contact-page">
 <header class="site-header">
-    <jsp:include page="../header.jsp" />
+    <jsp:include page="header.jsp" />
     <!-- header-bar -->
 </header>
 
@@ -83,7 +83,7 @@
                     <h2 class="entry-title">Contact</h2>
 
                     <ul class="breadcrumbs flex align-items-center">
-                        <li><a href="../index.jsp">Home</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li>Contact</li>
                     </ul>
                     <!-- .breadcrumbs -->
@@ -118,7 +118,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="contact-medium flex align-items-center">
                             <figure class="contact-icon">
-                                <img src="../images/phone.jpg" alt="phone icon" />
+                                <img src="images/phone.jpg" alt="phone icon" />
                             </figure>
                             <!-- phone-icon -->
 
@@ -137,7 +137,7 @@
                     <div class="col-12 col-md-6 col-lg-4 mt-5 mt-md-0">
                         <div class="contact-medium flex align-items-center">
                             <figure class="contact-icon">
-                                <img src="../images/mail.jpg" alt="phone icon" />
+                                <img src="images/mail.jpg" alt="phone icon" />
                             </figure>
                             <!-- phone-icon -->
 
@@ -156,7 +156,7 @@
                     <div class="col-12 col-md-6 col-lg-4 mt-5 mt-lg-0">
                         <div class="contact-medium flex align-items-center">
                             <figure class="contact-icon">
-                                <img src="../images/place.jpg" alt="phone icon" />
+                                <img src="images/place.jpg" alt="phone icon" />
                             </figure>
                             <!-- phone-icon -->
 
@@ -248,17 +248,17 @@
 </footer>
 <!-- site-footer -->
 
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
 <script
         type="text/javascript"
-        src="../js/jquery.collapsible.min.js"
+        src="js/jquery.collapsible.min.js"
 ></script>
-<script type="text/javascript" src="../js/swiper.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="../js/circle-progress.min.js"></script>
-<script type="text/javascript" src="../js/jquery.countTo.min.js"></script>
-<script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="js/circle-progress.min.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 </body>
 </html>
 

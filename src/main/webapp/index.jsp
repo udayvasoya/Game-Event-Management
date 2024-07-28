@@ -563,7 +563,7 @@
 </div>
 
 <footer class="site-footer">
-    <jsp:include page="./pages/footer.jsp" />
+    <jsp:include page="footer.jsp" />
 </footer>
 <!-- site-footer -->
 
