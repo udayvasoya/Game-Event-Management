@@ -1,7 +1,4 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 19-07-2024
@@ -206,6 +203,8 @@
                             byte[] img = rs.getBytes("image");
                             String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
                             String uImage = "data:image/jpeg;base64," + base64Imagee;
+                            String gender = rs.getString("gender");
+                            Date dob = rs.getDate("dob");
                 %>
 
                 <div class="row gutters-sm">
@@ -256,6 +255,24 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary text-light">
                                         <%= umobile %>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Gender</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary text-light">
+                                        <%= gender %>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">DOB</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary text-light">
+                                        <%= dob %>
                                     </div>
                                 </div>
                                 <hr />

@@ -10,7 +10,7 @@ public class User_login {
     private byte[]image;
     private String password;
 
-    public User_login(int id, String username, String email, String mobile, String gender, String dob, byte[] image, String password) {
+    public User_login(int id, String username, String email, String mobile, String gender, String dob, byte[] image) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -18,7 +18,7 @@ public class User_login {
         this.gender = gender;
         this.dob = dob;
         this.image = image;
-        this.password = password;
+
     }
 
     public User_login(String username, String email, String mobile, String gender, String dob, byte[] image, String password) {

@@ -32,6 +32,31 @@ public class UserDB {
         }
     }
 
+    public boolean updateuser (User_login user_login)
+    {
+        try
+        {
+            Connection connection = myDataBase.getConnection();
+            PreparedStatement pst =connection.prepareStatement("update users set username=?,email=?,mobile=?,gender=?,dob=?,image=? where id=?");
+            pst.setString(1, user_login.getUsername());
+            pst.setString(2, user_login.getEmail());
+            pst.setString(3,user_login.getMobile());
+            pst.setString(4, user_login.getGender());
+            pst.setString(5, user_login.getDob());
+            pst.setBytes(6, user_login.getImage());
+            pst.setInt(7,user_login.getId());
+
+            int updated =pst.executeUpdate();
+
+            return updated > 0 ;
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean validUser(User_login user_login)
     {
         try
