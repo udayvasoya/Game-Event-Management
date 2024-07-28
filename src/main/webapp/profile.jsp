@@ -347,18 +347,29 @@
                 <form
                         id="gameForm"
                         class="needs-validation"
-                        action="../index.html"
+                        action="updateUserServlet"
                         method="post"
                         enctype="multipart/form-data"
                         novalidate
                 >
+                    <label> Id: </label>
+                    <div class="mb-3">
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="exampleInputid"
+                                name="id"
+                                readonly
+                        />
+
+                    </div>
                     <label> Name: </label>
                     <div class="mb-3">
                         <input
                                 type="text"
                                 class="form-control"
                                 id="exampleInputname"
-                                name="gamename"
+                                name="uname"
                                 required
                         />
                         <div class="invalid-feedback">Please provide a name.</div>
@@ -369,23 +380,44 @@
                                 type="text"
                                 class="form-control"
                                 id="exampleInputemail"
-                                name="gamedesc"
+                                name="uemail"
                                 required
                         />
                         <div class="invalid-feedback">Please provide a email.</div>
                     </div>
-                    <label> Phone: </label>
+                    <label> Mobile: </label>
                     <div class="mb-3">
                         <input
                                 type="text"
                                 class="form-control"
                                 id="exampleInputphone"
-                                name="gamerules"
+                                name="umobile"
                                 required
                         />
                         <div class="invalid-feedback">
                             Please provide game phonenumber.
                         </div>
+                    </div>
+                    <label> Gender: </label>
+                    <div class="mb-3">
+                        <select required name="ugender">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="invalid-feedback">Please provide a Gender.</div>
+                    </div>
+                    <label> DOB: </label>
+                    <div class="mb-3">
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="exampleInputdate"
+                                name="udob"
+                                required
+                        />
+                        <div class="invalid-feedback">Please provide a dob.</div>
                     </div>
                     <label>Image:</label>
                     <div class="mb-3">
@@ -393,7 +425,7 @@
                                 type="file"
                                 class="form-control"
                                 id="exampleInputimage"
-                                name="price"
+                                name="uimage"
                                 required
                         />
                         <div class="invalid-feedback">Please provide a image.</div>
