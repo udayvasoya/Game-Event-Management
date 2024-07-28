@@ -196,16 +196,16 @@
                         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management", "root", "");
                         String query = "SELECT * FROM users WHERE id = ?";
                         PreparedStatement ps = conn.prepareStatement(query);
-                        ps.setInt(1, Integer.parseInt(id)); // Set the 'id' parameter dynamically
+                        ps.setInt(1, Integer.parseInt(id));
                         ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
 
-                        if (rs.next()) { // Fetch only one record
+                            String uname = rs.getString("username");
+                            String uemail = rs.getString("email");
+                            String umobile = rs.getString("mobile");
                             byte[] img = rs.getBytes("image");
                             String base64Imagee = java.util.Base64.getEncoder().encodeToString(img);
                             String uImage = "data:image/jpeg;base64," + base64Imagee;
-                            String uname = rs.getString("username");
-                            String uemail = rs.getString("email");
-                            int umobile = rs.getInt("mobile");
                 %>
 
                 <div class="row gutters-sm">
@@ -215,6 +215,7 @@
                                 <div
                                         class="d-flex flex-column align-items-center text-center"
                                 >
+
                                     <img
                                             src="<%= uImage %>"
                                             alt="Admin"
