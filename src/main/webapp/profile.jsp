@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -283,7 +283,7 @@
                                                 type="button"
                                                 class="btn btn-primary"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal"
+                                                data-bs-target="#exampleModal_<%= id %>"
                                         >
                                             Edit
                                         </button>
@@ -294,15 +294,15 @@
                         </div>
                     </div>
                 </div>
-                <%
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        ex.printStackTrace();
-                    }
-                %>
-            </div>
+<%--                <%--%>
+<%--                        }--%>
+<%--                    }--%>
+<%--                    catch(Exception ex)--%>
+<%--                    {--%>
+<%--                        ex.printStackTrace();--%>
+<%--                    }--%>
+<%--                %>--%>
+<%--            </div>--%>
         </div>
     </div>
 </div>
@@ -323,127 +323,73 @@
 <script type="text/javascript" src="js/circle-progress.min.js"></script>
 <script type="text/javascript" src="js/jquery.countTo.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
-</body>
 <!-- ========================================================== -->
-<div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
->
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form
-                        id="gameForm"
-                        class="needs-validation"
-                        action="updateUserServlet"
-                        method="post"
-                        enctype="multipart/form-data"
-                        novalidate
-                >
-                    <label> Id: </label>
-                    <div class="mb-3">
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="exampleInputid"
-                                name="id"
-                                readonly
-                        />
-
-                    </div>
-                    <label> Name: </label>
-                    <div class="mb-3">
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="exampleInputname"
-                                name="uname"
-                                required
-                        />
-                        <div class="invalid-feedback">Please provide a name.</div>
-                    </div>
-                    <label> Email: </label>
-                    <div class="mb-3">
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="exampleInputemail"
-                                name="uemail"
-                                required
-                        />
-                        <div class="invalid-feedback">Please provide a email.</div>
-                    </div>
-                    <label> Mobile: </label>
-                    <div class="mb-3">
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="exampleInputphone"
-                                name="umobile"
-                                required
-                        />
-                        <div class="invalid-feedback">
-                            Please provide game phonenumber.
+    <div class="modal fade" id="exampleModal_<%= id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="gameForm" class="needs-validation" action="updateUserServlet" method="post" enctype="multipart/form-data" novalidate>
+                        <label> Id: </label>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleInputid" name="id" value="<%= id %>" readonly />
                         </div>
-                    </div>
-                    <label> Gender: </label>
-                    <div class="mb-3">
-                        <select required class="form-control" name="ugender">
-                            <option value="" disabled selected>Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <div class="invalid-feedback">Please provide a Gender.</div>
-                    </div>
-                    <label> DOB: </label>
-                    <div class="mb-3">
-                        <input
-                                type="date"
-                                class="form-control"
-                                id="exampleInputdate"
-                                name="udob"
-                                required
-                        />
-                        <div class="invalid-feedback">Please provide a dob.</div>
-                    </div>
-                    <label>Image:</label>
-                    <div class="mb-3">
-                        <input
-                                type="file"
-                                class="form-control"
-                                id="exampleInputimage"
-                                name="uimage"
-                                required
-                        />
-                        <div class="invalid-feedback">Please provide a image.</div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                >
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                        <label> Name: </label>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleInputname" name="uname" value="<%= uname %>" required />
+                            <div class="invalid-feedback">Please provide a name.</div>
+                        </div>
+                        <label> Email: </label>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleInputemail" name="uemail" value="<%= uemail %>" required />
+                            <div class="invalid-feedback">Please provide an email.</div>
+                        </div>
+                        <label> Mobile: </label>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleInputphone" name="umobile" value="<%= umobile %>" required />
+                            <div class="invalid-feedback">Please provide a phone number.</div>
+                        </div>
+                        <label> Gender: </label>
+                        <div class="mb-3">
+                            <select required class="form-control" name="ugender">
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="invalid-feedback">Please provide a gender.</div>
+                        </div>
+                        <label> DOB: </label>
+                        <div class="mb-3">
+                            <input type="date" class="form-control" id="exampleInputdate" name="udob" required />
+                            <div class="invalid-feedback">Please provide a date of birth.</div>
+                        </div>
+                        <label> Image: </label>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="exampleInputImage" name="uimage" />
+                            <div class="invalid-feedback">Please provide an image.</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+<%
+        }
+    }
+    catch(Exception ex)
+    {
+        ex.printStackTrace();
+    }
+%>
+</body>
 </html>
 

@@ -26,8 +26,8 @@ public class updateUserServlet extends HttpServlet
         String mobile = req.getParameter("umobile");
         String gender = req.getParameter("ugender");
         String dob = req.getParameter("udob");
-        Part uimage = req.getPart("image");
-        InputStream inputStream = uimage.getInputStream();
+        Part image = req.getPart("uimage");
+        InputStream inputStream = image.getInputStream();
         byte[] udp = readBytesFromInputStream(inputStream);
 
         User_login user_login = new User_login(id,name,email,mobile,gender,dob,udp);
@@ -36,10 +36,10 @@ public class updateUserServlet extends HttpServlet
 
         if(update)
         {
-            resp.sendRedirect(req.getContextPath()+"profile.jsp");
+            resp.sendRedirect(req.getContextPath()+"/profile.jsp");
         }
         else {
-            resp.sendRedirect(req.getContextPath() + "profile.jsp");
+            resp.sendRedirect(req.getContextPath() + "/profile.jsp");
         }
 
     }
