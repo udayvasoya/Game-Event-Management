@@ -242,7 +242,7 @@
                             required
                             readonly
                     />
-                    <div class="invalid-feedback">Please provide a game name.</div>
+
                 </div>
                 <div class="mb-3">
                     <input
@@ -252,7 +252,7 @@
                             name="gamedesc"
                             required
                     />
-                    <div class="invalid-feedback">Please provide a Name.</div>
+
                 </div>
                 <div class="mb-3">
 
@@ -263,7 +263,7 @@
                             name="gamerules"
                             required
                     />
-                    <div class="invalid-feedback">Please provide game email.</div>
+
                 </div>
                 <div class="mb-3">
                     <input
@@ -274,7 +274,7 @@
                             required
                             readonly
                     />
-                    <div class="invalid-feedback">Please provide a price.</div>
+                    
                 </div>
 
 
