@@ -120,6 +120,7 @@
         <div class="entry-header">
             <div class="entry-title">
                 <p>JUST THE BEST</p>
+                <h1><%= request.getParameter("id")%></h1>
                 <h2>Game Name</h2>
             </div>
             <!-- -->
@@ -228,27 +229,43 @@
         %>
 
         <%
+            String uname = "";
+            String uemail = "";
+            String gname = "";
+            int price = 0;
+
             try
             {
+                HttpSession hs = request.getSession();
+//                hs.setAttribute("useremail",uemail);
+                String em = (String) hs.getAttribute("useremail");
                 String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
                 if (id == null || id.isEmpty()) {
-                    id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+                    id = "13"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
                 }
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
-                String query = "SELECT u.username, u.email, g.game_name, g.price FROM users u JOIN games g ON u.id = g.id where u.id = ?;";
+                String query = "SELECT u.username, u.email, g.game_name, g.price FROM users u, games g WHERE u.email = ? AND g.id = ?";
                 PreparedStatement ps = connection.prepareStatement(query);
-                ps.setString(1, id); // Set the 'id' parameter dynamically
+                ps.setString(1, em); // Set the 'id' parameter dynamically
+                ps.setString(2,id);
                 ResultSet rs = ps.executeQuery();
                 if(rs.next())
                 {
-                    String uname = rs.getString("username");
-                    String uemail = rs.getString("email");
-                    String gname = rs.getString("gamename");
-                    int price = rs.getInt("price");
+                    uname = rs.getString("username");
+                    uemail = rs.getString("email");
+                    gname = rs.getString("gamename");
+                    price = rs.getInt("price");
 
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
         %>
+
         <div class="flex justify-content-center">
             <form
                     id="gameForm"
@@ -260,7 +277,7 @@
             >
                 <div class="mb-3">
                     <input
-                            type="hidden"
+                            type="text"
                             class="form-control"
                             id="exampleInputName"
                             name="name"
@@ -272,7 +289,7 @@
                 <div class="mb-3">
 
                     <input
-                            type="hidden"
+                            type="text"
                             class="form-control"
                             id="exampleInputEmail"
                             name="email"
@@ -283,7 +300,7 @@
                 </div>
                 <div class="mb-3">
                     <input
-                            type="hidden"
+                            type="text"
                             class="form-control"
                             id="exampleInputPrice"
                             name="price"
@@ -295,7 +312,7 @@
                 </div>
                 <div class="mb-3">
                     <input
-                            type="hidden"
+                            type="text"
                             class="form-control"
                             id="exampleInputGname"
                             name="gamename"
@@ -318,14 +335,7 @@
                 </button>
             </form>
         </div>
-        <%
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.printStackTrace();
-            }
-        %>
+
     </div>
 
 

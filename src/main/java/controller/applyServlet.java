@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "applyServlet",value = "applyServlet")
+@WebServlet(name = "applyServlet",value = "/applyServlet")
 @MultipartConfig
 public class applyServlet extends HttpServlet
 {
