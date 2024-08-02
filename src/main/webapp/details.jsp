@@ -82,6 +82,9 @@
         }
 
     </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="about-us">
 <header class="site-header">
@@ -224,11 +227,33 @@
             }
         %>
 
+        <%
+            try
+            {
+                String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+                if (id == null || id.isEmpty()) {
+                    id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+                }
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/event_management","root","");
+                String query = "SELECT u.username, u.email, g.game_name, g.price FROM users u JOIN games g ON u.id = g.id where u.id = ?;";
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setString(1, id); // Set the 'id' parameter dynamically
+                ResultSet rs = ps.executeQuery();
+                if(rs.next())
+                {
+                    String uname = rs.getString("username");
+                    String uemail = rs.getString("email");
+                    String gname = rs.getString("gamename");
+                    int price = rs.getInt("price");
+
+        %>
         <div class="flex justify-content-center">
             <form
                     id="gameForm"
                     class="needs-validation"
-                    action="index.jsp"
+                    action="applyServlet"
                     method="post"
                     enctype="multipart/form-data"
                     novalidate
@@ -237,19 +262,9 @@
                     <input
                             type="hidden"
                             class="form-control"
-                            id="exampleInputGamename"
-                            name="gamename"
-                            required
-                            readonly
-                    />
-
-                </div>
-                <div class="mb-3">
-                    <input
-                            type="hidden"
-                            class="form-control"
                             id="exampleInputName"
-                            name="gamedesc"
+                            name="name"
+                            value="<%= uname %>"
                             required
                     />
 
@@ -260,7 +275,8 @@
                             type="hidden"
                             class="form-control"
                             id="exampleInputEmail"
-                            name="gamerules"
+                            name="email"
+                            value="<%= uemail %>"
                             required
                     />
 
@@ -271,10 +287,23 @@
                             class="form-control"
                             id="exampleInputPrice"
                             name="price"
+                            value="<%= price %>"
                             required
                             readonly
                     />
                     
+                </div>
+                <div class="mb-3">
+                    <input
+                            type="hidden"
+                            class="form-control"
+                            id="exampleInputGname"
+                            name="gamename"
+                            value="<%= gname %>"
+                            required
+                            readonly
+                    />
+
                 </div>
 
 
@@ -289,6 +318,14 @@
                 </button>
             </form>
         </div>
+        <%
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        %>
     </div>
 
 
@@ -489,6 +526,76 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"
 ></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('x');
+
+        if (successParam && successParam === 'y') {
+            // Display success toast with auto-close and timer
+            let timerInterval;
+            Swal.fire({
+                icon: "success",
+                title: "Inserted",
+                html: "Item Inserted Successfully... I will close in <b></b> milliseconds.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getHtmlContainer().querySelector('b');
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+
+            urlParams.delete('x');
+            const newUrl = `/index.jsp`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('x');
+
+        if (successParam && successParam === 'nu') {
+            // Display success toast with auto-close and timer
+            let timerInterval;
+            Swal.fire({
+                icon: "success",
+                title: "Inserted",
+                html: "Item Not Inserted... I will close in <b></b> milliseconds.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getHtmlContainer().querySelector('b');
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+
+            urlParams.delete('x');
+            const newUrl = `/profile.jsp`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+</script>
 </body>
 </html>
 
