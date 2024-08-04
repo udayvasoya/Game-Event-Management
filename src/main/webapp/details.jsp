@@ -42,6 +42,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
     <style>
         #btnApply:hover {
             background: -webkit-linear-gradient(#00d0ff, #25ffbf);
@@ -83,7 +84,7 @@
 
     </style>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 <body class="about-us">
