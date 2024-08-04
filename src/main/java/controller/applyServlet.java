@@ -28,10 +28,10 @@ public class applyServlet extends HttpServlet
 
         if(insert)
         {
-            resp.sendRedirect(req.getContextPath()+"/index.jsp&x=y");
+            resp.sendRedirect(req.getContextPath()+"/index.jsp?x=y");
         }
         else {
-            resp.sendRedirect(req.getContextPath()+"/details.jsp&x=nu");
+            resp.sendRedirect(req.getContextPath()+"/details.jsp?x=nu");
         }
     }
 }

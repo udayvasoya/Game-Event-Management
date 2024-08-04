@@ -120,7 +120,6 @@
         <div class="entry-header">
             <div class="entry-title">
                 <p>JUST THE BEST</p>
-                <h1><%= request.getParameter("id")%></h1>
                 <h2>Game Name</h2>
             </div>
             <!-- -->
@@ -237,11 +236,12 @@
             try
             {
                 HttpSession hs = request.getSession();
-//                hs.setAttribute("useremail",uemail);
                 String em = (String) hs.getAttribute("useremail");
+
                 String id = request.getParameter("id"); // Retrieve the 'id' parameter from the request
+
                 if (id == null || id.isEmpty()) {
-                    id = "13"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
+                    id = "1"; // Default to '1' if 'id' parameter is not provided (you can handle this according to your requirements)
                 }
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -255,7 +255,7 @@
                 {
                     uname = rs.getString("username");
                     uemail = rs.getString("email");
-                    gname = rs.getString("gamename");
+                    gname = rs.getString("game_name");
                     price = rs.getInt("price");
 
                 }
@@ -283,6 +283,7 @@
                             name="name"
                             value="<%= uname %>"
                             required
+                            readonly
                     />
 
                 </div>
@@ -295,6 +296,7 @@
                             name="email"
                             value="<%= uemail %>"
                             required
+                            readonly
                     />
 
                 </div>
@@ -601,7 +603,7 @@
             });
 
             urlParams.delete('x');
-            const newUrl = `/profile.jsp`;
+            const newUrl = `/details.jsp`;
             window.history.replaceState({}, document.title, newUrl);
         }
     });
